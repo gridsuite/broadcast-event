@@ -247,7 +247,7 @@ async function run() {
         const organizations = additionalOrganizations ? [owner, ...additionalOrganizations.split(' ')] : [owner];
         core.info(`Organizations: ${organizations}`);
 
-        for (const organization in organizations) {
+        for (const organization of organizations) {
             core.info(`Organization: ${organization}`);
             // get repository list for this organization
         //     const result = await request(`GET /users/${organization}/repos`);
