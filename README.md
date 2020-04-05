@@ -10,7 +10,7 @@ Github Action to broadcast an event to all other repositories using repository d
 
 ### `organizations` (**optional**)
 
-A list of organizations to send to event in addition to current organization.
+A list of organizations separated by a white space to send the event in addition to current organization.
 
 ### `event-type` (**required**)
 
