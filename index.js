@@ -15,7 +15,7 @@ async function run() {
         const additionalOrganizations = core.getInput("organizations");
         core.info(`Organizations: ${additionalOrganizations}`);
 
-        const organizations = additionalOrganizations ? [owner, ...additionalOrganizations] : [owner];
+        const organizations = additionalOrganizations ? [owner, ...additionalOrganizations.split(' ')] : [owner];
         core.info(`Organizations: ${organizations}`);
 
         // for (const organization in organizations) {
