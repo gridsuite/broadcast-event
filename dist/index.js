@@ -249,27 +249,27 @@ async function run() {
 
         for (const index in organizations) {
             const organization = organizations[index];
-            core.info(`Organization: ${organization}`);
+
             // get repository list for this organization
-        //     const result = await request(`GET /users/${organization}/repos`);
-        //     const repositories = result.data.map(repo => repo.name);
-        //
-        //     // send the event to all repositories
-        //     repositories.forEach(repository => {
-        //         core.info(`Send event to repository: ${repository}`);
-        //         request(
-        //             `POST /repos/${organization}/${repository}/dispatches`,
-        //             {
-        //                 headers: {
-        //                     authorization: `token ${token}`
-        //                 },
-        //                 mediaType: {
-        //                     previews: ['everest']
-        //                 },
-        //                 event_type: `${eventType}`
-        //             }
-        //         );
-        //     });
+            const result = await request(`GET /users/${organization}/repos`);
+            const repositories = result.data.map(repo => repo.name);
+
+            // send the event to all repositories
+            repositories.forEach(repository => {
+                core.info(`Send event to repository: ${repository}`);
+                request(
+                    `POST /repos/${organization}/${repository}/dispatches`,
+                    {
+                        headers: {
+                            authorization: `token ${token}`
+                        },
+                        mediaType: {
+                            previews: ['everest']
+                        },
+                        event_type: `${eventType}`
+                    }
+                );
+            });
         }
     } catch (error) {
         core.setFailed(error.message);
