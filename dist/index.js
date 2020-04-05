@@ -256,7 +256,7 @@ async function run() {
 
             // send the event to all repositories
             repositories.forEach(repository => {
-                core.info(`Send event to repository: ${repository}`);
+                core.info(`Send event to repository: ${organization}/${repository}`);
                 request(
                     `POST /repos/${organization}/${repository}/dispatches`,
                     {
